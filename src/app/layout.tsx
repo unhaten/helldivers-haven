@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat as FontSans } from 'next/font/google'
 import './globals.css'
-import { Inter as FontSans } from 'next/font/google'
+// import { Inter as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from './components/theme-provider'
+import NavBar from './components/navbar'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -23,7 +24,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
+		<html lang='en' className='dark'>
 			<body
 				className={cn(
 					'min-h-screen bg-background font-sans antialiased',
@@ -37,7 +38,10 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					{children}
+					<header className='sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
+						<NavBar />
+					</header>
+					<div className='max-w-[1920px] m-auto'>{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>
