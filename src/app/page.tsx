@@ -26,6 +26,8 @@ const Home: FC<HomeProps> = async () => {
 	// 	// 125- fenrir III
 	// ).then(res => res.json())
 
+	// status for amount of players
+
 	// console.log(planet)
 
 	return (
@@ -65,6 +67,16 @@ const Home: FC<HomeProps> = async () => {
 					className='rounded-xl opacity-100 max-w-[1100px] '
 				/>
 			</div> */}
+			<h2 className='text-center text-4xl font-bold mt-32'>
+				Choose the race
+			</h2>
+			<ul className='grid grid-cols-3 items-center justify-center justify-items-center text-center mt-16'>
+				<li className='p-4 border-solid border-2 border-stone-200 w-1/3'>
+					card1
+				</li>
+				<li>card2</li>
+				<li>card3</li>
+			</ul>
 		</main>
 	)
 }
