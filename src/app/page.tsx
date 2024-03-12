@@ -4,20 +4,45 @@ import { ModeToggle } from './components/ui/toggle-mode'
 import Image from 'next/image'
 import { AspectRatio } from './components/ui/aspect-ratio'
 import RaceList from './components/race-list'
+import { PlanetStatus } from '@/lib/definitions'
 
 interface HomeProps {}
 
 const Home: FC<HomeProps> = async () => {
-	// const data = await fetch('https://helldivers-2.fly.dev/api/').then(res =>
-	// 	res.json()
-	// )
+	const data = await fetch('https://helldivers-2.fly.dev/api/').then(res =>
+		res.json()
+	)
 
-	// const currentWarId = data.current
+	const currentWarId = data.current
 
 	// console.log(currentWarId)
 
-	// const war = await fetch(
+	// const planets = await fetch(
 	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/planets`
+	// ).then(res => res.json())
+
+	// planetsIdArray.map(item => {
+	// 	fetch(
+	// 		`https://helldivers-2.fly.dev/api/${currentWarId}/planets/${item}`
+	// 	).then(res => res.json())
+	// })
+
+	const planetsStatus = await fetch(
+		`https://helldivers-2.fly.dev/api/${currentWarId}/status`
+	)
+		.then(res => res.json())
+		.then(data => data.planet_status)
+
+	// console.log(planetsStatus)
+
+	let totalPlayers = 0
+
+	planetsStatus.map((item: PlanetStatus) => (totalPlayers += item.players))
+
+	console.log(totalPlayers)
+
+	// const totalPlayers = await fetch(
+	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/planets/`
 	// ).then(res => res.json())
 
 	// console.log(war)
@@ -37,7 +62,7 @@ const Home: FC<HomeProps> = async () => {
 				<Image
 					src='/hero.jpg'
 					alt='logo'
-					width={1000}
+					width={'1000'}
 					height={100}
 					className='rounded-xl object-cover opacity-80 animate-fadeIn w-[500px] lg-[600px] xl:w-[800px] 2xl:w-[1000px]'
 				/>
@@ -46,7 +71,9 @@ const Home: FC<HomeProps> = async () => {
 					<h2 className='text-6xl text-primary font-bold'>
 						Helldive Haven
 					</h2>
-					<p className='mt-6'>Current helldivers: 948775</p>
+					<p className='mt-6'>
+						Current helldivers on a mission: {totalPlayers}
+					</p>
 					<p className='my-6 w-1/2 m-auto text-lg'>
 						Goal of this app is to unite every one citizen in order
 						to withstand against our dangerous foes and protect our
