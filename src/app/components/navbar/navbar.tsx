@@ -10,9 +10,9 @@ const data: NavBarMenuI[] = [
 	{
 		name: 'Races',
 		links: [
-			{ name: 'The Humans', href: '/faction/humans' },
-			{ name: 'The Terminids', href: '/faction/terminids' },
-			{ name: 'The Automatons', href: '/faction/automatons' }
+			{ name: 'The Humans', href: '/humans' },
+			{ name: 'The Terminids', href: '/terminids' },
+			{ name: 'The Automatons', href: '/automatons' }
 		]
 	},
 	{ name: 'Main Options', links: [{ name: 'Documentation', href: '/docs' }] }

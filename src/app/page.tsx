@@ -29,8 +29,8 @@ const Home: FC<HomeProps> = async () => {
 
 	const planetsStatus = await fetch(
 		`https://helldivers-2.fly.dev/api/${currentWarId}/status`,
-		// { cache: 'no-cache' }
-		{ next: { revalidate: 3600 } }
+		{ cache: 'no-cache' }
+		// { next: { revalidate: 3600 } }
 	)
 		.then(res => res.json())
 		.then(data => data.planet_status)
@@ -94,7 +94,7 @@ const Home: FC<HomeProps> = async () => {
 					<p className='mt-6'>
 						Current helldivers on a mission: {totalPlayers}
 					</p>
-					<p className='my-6 w-1/2 m-auto text-lg'>
+					<p className='my-6 w-full md:w-1/2 m-auto text-lg'>
 						Goal of this app is to unite every one citizen in order
 						to withstand against our dangerous foes and protect our
 						fate, destiny and the most important - The Democracy
