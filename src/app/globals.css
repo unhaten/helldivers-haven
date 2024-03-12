@@ -52,3 +52,8 @@
 		--ring: 35.5 91.7% 32.9%;
 	}
 }
+
+.nav__links {
+	width: 100%;
+	min-width: 150px;
+}

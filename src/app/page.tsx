@@ -3,6 +3,7 @@ import { Button } from './components/ui/button'
 import { ModeToggle } from './components/ui/toggle-mode'
 import Image from 'next/image'
 import { AspectRatio } from './components/ui/aspect-ratio'
+import RaceList from './components/race-list'
 
 interface HomeProps {}
 
@@ -67,16 +68,10 @@ const Home: FC<HomeProps> = async () => {
 					className='rounded-xl opacity-100 max-w-[1100px] '
 				/>
 			</div> */}
-			<h2 className='text-center text-4xl font-bold mt-32'>
-				Choose the race
+			<h2 className='text-center text-4xl font-bold my-16'>
+				Choose faction
 			</h2>
-			<ul className='grid grid-cols-3 items-center justify-center justify-items-center text-center mt-16'>
-				<li className='p-4 border-solid border-2 border-stone-200 w-1/3'>
-					card1
-				</li>
-				<li>card2</li>
-				<li>card3</li>
-			</ul>
+			<RaceList />
 		</main>
 	)
 }
