@@ -43,6 +43,7 @@ export default function RootLayout({
 						<NavBar />
 					</header>
 					<div className='max-w-[1780px] m-auto'>{children}</div>
+					<footer className='mt-32'></footer>
 				</ThemeProvider>
 			</body>
 		</html>

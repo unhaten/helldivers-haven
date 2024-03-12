@@ -70,7 +70,7 @@ const config = {
 				},
 				fadeIn: {
 					'0%': { opacity: '0' },
-					'100%': { opacity: '0.5' }
+					'100%': { opacity: '0.8' }
 				}
 			},
 			animation: {

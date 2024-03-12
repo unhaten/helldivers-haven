@@ -8,7 +8,7 @@ import NavBarMenu from './navbar-menu'
 
 const data: NavBarMenuI[] = [
 	{
-		name: 'Factions',
+		name: 'Races',
 		links: [
 			{ name: 'The Humans', href: '/faction/humans' },
 			{ name: 'The Terminids', href: '/faction/terminids' },
