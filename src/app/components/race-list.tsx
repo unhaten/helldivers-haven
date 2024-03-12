@@ -2,7 +2,7 @@ import RaceCard from './race-card'
 
 const RaceList = () => {
 	return (
-		<ul className='grid grid-cols-1 md:grid-cols-3 items-center justify-center justify-items-center text-center'>
+		<ul className='grid grid-cols-1 xl:grid-cols-3 items-center justify-center justify-items-center text-center'>
 			<RaceCard
 				race={'The Automatons'}
 				imageName={'automatons'}

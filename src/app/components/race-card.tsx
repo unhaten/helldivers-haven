@@ -22,10 +22,10 @@ const RaceCard: FC<RaceCardProps> = ({ race, imageName }) => {
 	}
 
 	return (
-		<li className='w-1/2 cursor-pointer'>
+		<li className='w-full sm:w-1/2 cursor-pointer'>
 			<Link href={imageName} className=''>
 				<div
-					className={`p-4 flex flex-col items-center rounded-xl shadow-lg transition-all scale-75 hover:scale-100 hover:shadow-[#fefefe]`}
+					className={`p-6 flex flex-col items-center rounded-3xl shadow-lg border-2 transition-all scale-75 hover:scale-100 hover:shadow-[#fefefe]`}
 					onMouseEnter={handleMouseEnter}
 					onMouseLeave={handleMouseLeave}
 				>

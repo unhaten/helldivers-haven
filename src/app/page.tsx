@@ -28,7 +28,9 @@ const Home: FC<HomeProps> = async () => {
 	// })
 
 	const planetsStatus = await fetch(
-		`https://helldivers-2.fly.dev/api/${currentWarId}/status`
+		`https://helldivers-2.fly.dev/api/${currentWarId}/status`,
+		// { cache: 'no-cache' }
+		{ next: { revalidate: 3600 } }
 	)
 		.then(res => res.json())
 		.then(data => data.planet_status)
@@ -37,24 +39,42 @@ const Home: FC<HomeProps> = async () => {
 
 	let totalPlayers = 0
 
-	planetsStatus.map((item: PlanetStatus) => (totalPlayers += item.players))
+	const planetNamesArray: string[] = []
 
-	console.log(totalPlayers)
+	planetsStatus.map((item: PlanetStatus) => {
+		// console.log(item.players)
+		// console.log(item.health)
+		if (item.players > 0) {
+			if (
+				item.health <= 1000000 &&
+				item.liberation < 100
+				// (item.health === 1000000 && item.liberation < 100) ||
+				// item.players === 0
+			) {
+				planetNamesArray.push(item.planet.name)
+			}
+		}
+		totalPlayers += item.players
+	})
 
-	// const totalPlayers = await fetch(
-	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/planets/`
-	// ).then(res => res.json())
+	// const planetAttacks = await fetch(
+	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/status`
+	// )
+	// 	.then(res => res.json())
+	// 	.then(data => data.planet_attacks)
 
-	// console.log(war)
+	// console.log(planetAttacks)
 
-	// const planet = await fetch(
-	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/planets/64` // meridia
-	// 	// 125- fenrir III
-	// ).then(res => res.json())
+	//////////////////////////////////////////////////////////////////////
+	// const planetNames = planetAttacks.map((planet: any) => {
+	// 	// console.log(planet.target.name)
 
-	// status for amount of players
+	// 	planetNamesArray.push(planet.target.name)
+	// 	planetNamesArray.push(planet.source.name)
+	// })
 
-	// console.log(planet)
+	console.log(planetNamesArray)
+	///////////////////////////////////////////////////////////////////
 
 	return (
 		<main>
@@ -77,7 +97,7 @@ const Home: FC<HomeProps> = async () => {
 					<p className='my-6 w-1/2 m-auto text-lg'>
 						Goal of this app is to unite every one citizen in order
 						to withstand against our dangerous foes and protect our
-						fate, destiny and the most important - Democracy
+						fate, destiny and the most important - The Democracy
 					</p>
 				</div>
 			</div>
