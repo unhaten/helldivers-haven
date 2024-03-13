@@ -28,6 +28,7 @@ const Home: FC<HomeProps> = async () => {
 	let totalPlayers = 0
 
 	const planetNamesArray: string[] = []
+	const planets: any[] = []
 
 	planetsStatus.map((item: PlanetStatus) => {
 		// console.log(item.players)
@@ -36,11 +37,13 @@ const Home: FC<HomeProps> = async () => {
 			if (
 				item.health <= 1000000 &&
 				item.liberation !== 100 &&
-				item.players !== 0
+				item.players > 100
+				// item.owner === 'Automaton'
 				// (item.health === 1000000 && item.liberation < 100) ||
 				// item.players === 0
 			) {
 				planetNamesArray.push(item.planet.name)
+				planets.push(item)
 			}
 		}
 		totalPlayers += item.players
@@ -63,6 +66,7 @@ const Home: FC<HomeProps> = async () => {
 	// })
 
 	console.log(planetNamesArray)
+	console.log(planets)
 	///////////////////////////////////////////////////////////////////
 
 	return (
