@@ -15,18 +15,6 @@ const Home: FC<HomeProps> = async () => {
 
 	const currentWarId = data.current
 
-	// console.log(currentWarId)
-
-	// const planets = await fetch(
-	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/planets`
-	// ).then(res => res.json())
-
-	// planetsIdArray.map(item => {
-	// 	fetch(
-	// 		`https://helldivers-2.fly.dev/api/${currentWarId}/planets/${item}`
-	// 	).then(res => res.json())
-	// })
-
 	const planetsStatus = await fetch(
 		`https://helldivers-2.fly.dev/api/${currentWarId}/status`,
 		{ cache: 'no-cache' }
@@ -47,7 +35,8 @@ const Home: FC<HomeProps> = async () => {
 		if (item.players > 0) {
 			if (
 				item.health <= 1000000 &&
-				item.liberation < 100
+				item.liberation !== 100 &&
+				item.players !== 0
 				// (item.health === 1000000 && item.liberation < 100) ||
 				// item.players === 0
 			) {

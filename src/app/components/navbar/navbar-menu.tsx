@@ -12,7 +12,7 @@ import NavBarMenuItem from './navbar-menu-item'
 
 const NavBarMenu: FC<NavBarMenuI> = ({ name, links }) => {
 	return (
-		<NavigationMenu className='w-150'>
+		<NavigationMenu>
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger>{name}</NavigationMenuTrigger>
