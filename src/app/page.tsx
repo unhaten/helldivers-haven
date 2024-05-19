@@ -9,19 +9,19 @@ import { PlanetStatus } from '@/lib/definitions'
 interface HomeProps {}
 
 const Home: FC<HomeProps> = async () => {
-	const data = await fetch('https://helldivers-2.fly.dev/api/').then(res =>
-		res.json()
-	)
+	// const data = await fetch('https://helldivers-2.fly.dev/api/').then(res =>
+	// 	res.json()
+	// )
 
-	const currentWarId = data.current
+	// const currentWarId = data.current
 
-	const planetsStatus = await fetch(
-		`https://helldivers-2.fly.dev/api/${currentWarId}/status`,
-		{ cache: 'no-cache' }
-		// { next: { revalidate: 3600 } }
-	)
-		.then(res => res.json())
-		.then(data => data.planet_status)
+	// const planetsStatus = await fetch(
+	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/status`,
+	// 	{ cache: 'no-cache' }
+	// 	// { next: { revalidate: 3600 } }
+	// )
+	// 	.then(res => res.json())
+	// 	.then(data => data.planet_status)
 
 	// console.log(planetsStatus)
 
@@ -30,24 +30,26 @@ const Home: FC<HomeProps> = async () => {
 	const planetNamesArray: string[] = []
 	const planets: any[] = []
 
-	planetsStatus.map((item: PlanetStatus) => {
-		// console.log(item.players)
-		// console.log(item.health)
-		if (item.players > 0) {
-			if (
-				item.health <= 1000000 &&
-				item.liberation !== 100 &&
-				item.players > 100
-				// item.owner === 'Automaton'
-				// (item.health === 1000000 && item.liberation < 100) ||
-				// item.players === 0
-			) {
-				planetNamesArray.push(item.planet.name)
-				planets.push(item)
-			}
-		}
-		totalPlayers += item.players
-	})
+	// planetsStatus.map((item: PlanetStatus) => {
+	// 	// console.log(item.players)
+	// 	// console.log(item.health)
+	// 	if (item.players > 0) {
+	// 		if (
+	// 			item.health <= 1000000 &&
+	// 			item.liberation !== 100 &&
+	// 			item.players > 100
+	// 			// item.owner === 'Automaton'
+	// 			// (item.health === 1000000 && item.liberation < 100) ||
+	// 			// item.players === 0
+	// 		) {
+	// 			planetNamesArray.push(item.planet.name)
+	// 			planets.push(item)
+	// 		}
+	// 	}
+	// 	totalPlayers += item.players
+	// })
+
+	// --------------------------------------------
 
 	// const planetAttacks = await fetch(
 	// 	`https://helldivers-2.fly.dev/api/${currentWarId}/status`
@@ -79,8 +81,8 @@ const Home: FC<HomeProps> = async () => {
 					height={100}
 					className='rounded-xl object-cover opacity-80 animate-fadeIn w-[500px] lg-[600px] xl:w-[800px] 2xl:w-[1000px]'
 				/>
-				<div className='text-center w-full mt-8 lg:mt-0'>
-					<h1 className='text-2xl'>Welcome to the</h1>
+				<div className='text-center w-full mt-8 lg:mt-0 text-white'>
+					<h1 className='text-2xl '>Welcome to the</h1>
 					<h2 className='text-6xl text-primary font-bold'>
 						Helldive Haven
 					</h2>
@@ -104,7 +106,7 @@ const Home: FC<HomeProps> = async () => {
 					className='rounded-xl opacity-100 max-w-[1100px] '
 				/>
 			</div> */}
-			<h2 className='text-center text-4xl font-bold my-8 lg:my-16'>
+			<h2 className='text-center text-4xl font-bold my-8 lg:my-16 text-white'>
 				Choose faction
 			</h2>
 			<RaceList />
